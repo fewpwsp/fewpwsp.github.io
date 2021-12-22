@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jsTask</title>
+    <script >
+    let btnTheme = document.getElementById('btnTheme');        //Смена темы сайта
+    btnTheme.onclick = function ()
+        {
+            let theme = document.getElementById('themeLink');
+            if (theme.getAttribute("href") == "../styles/light.css")
+            {
+                theme.href = "../styles/dark.css";
+            }
+            else
+            {
+                theme.href = "../styles/light.css";
+            }
+        }
+
+    function formSend()                                         //Кнопка на форме
+        {
+            var name = document.getElementById("login").value;
+            var pas = document.getElementById("password").value;
+            var mail = document.getElementById("email").value;
+            var gen = document.getElementById("gender");
+            var city = document.getElementById("city");
+            var obr;
+            if (gen.options[gen.selectedIndex].textContent == 'мужской') 
+            {
+                obr = "Уважаемый ";
+            }
+            else
+            {
+                obr = "Уважаемая ";
+            }
+            var message = obr + name + ', проверьте введенные данные:';
+            message = message + '\nПароль: ' + pas + '\nИнформация будет отправлена на адрес: ' + mail + '\nЖдем в нашем офисе в городе ' + city.options[city.selectedIndex].textContent;  
+            alert(message); 
+        }
+
+        
+
+    </script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link rel="stylesheet" href="../styles/light.css" id="themeLink">
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body class="js-body">
+    <header>
+        <nav>
+            <ul class="navigation">
+                <li><a href="../index.html"> <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/%D0%93%D0%BE%D1%81%D1%83%D0%B4%D0%B0%D1%80%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9_%D1%83%D0%BD%D0%B8%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%82%D0%B5%D1%82_%D0%94%D1%83%D0%B1%D0%BD%D0%B0.png" width="120" height="120" alt="Dubna state university logo"></a></li>
+                <li><a href="../index.html">О себе</a></li>
+                <li><a href="competence.html">Компетенции</a></li>
+                <li><a href="resume.html">Резюме</a></li>
+                <li><a href="portfolio.html">Портфолио</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+                <li><a href="grid.html">Grid</a></li>
+                <li><a class="nav-item-active" href="jsTask.html">JS</a></li>
+            </ul>
+            
+        </nav>
+        
+    </header>
+
+    <article class="header background-color-black">
+        <h1 class="header-title">Веб-технологии</h1>
+        <h3 class="header-text">Университет "Дубна"</h3>
+    </article>
+
+    <div>
+    <form>
+        <div class = "js-form">
+            <div class = "js-form-var1"><label for = "login">Введите логин</label></div>
+            <div class = "js-form-var2"><input type = "text" id = "login"  name = "login" placeholder = "Логин" size = "15" pattern = ^[a-zA-Z]+$ required /></div>
+            <div class = "js-form-var3"><label for = "password">Введите пароль</label></div>
+            <div class = "js-form-var4"><input type = "password" id = "password" name = "password" placeholder = "Пароль" size = "15" pattern = [a-zA-Z0-9]{6,} required /></div>
+            <div class = "js-form-var5"><label for = "email">Введите адрес</label></div>
+            <div class = "js-form-var6"><input type = "email" id = "email" name = "email" placeholder = "example@gmail.com" size = "15" required /></div>
+            <div class = "js-form-var7">
+                <label for = "mailing">Подписаться на расслыку</label>
+                <input type = "checkbox" id = "mailing" name = "mailing" checked /><br>
+            </div>
+            <div class = "js-form-var8">
+                <label for = "gender">Пол</label>
+                <select id = "gender" name = "gender">
+                    <option>мужской</option>
+                    <option>женский</option>
+                </select>
+            </div>
+            <div class = "js-form-var9">
+                <label for = "city">Укажите город</label>
+                <select id = "city" name ="city">
+                    <option>Москва</option>
+                    <option>Санкт-Петербург</option>
+                    <option>Новосибирск</option>
+                    <option>Владивосток</option>
+                </select>
+            </div>
+            <div class = "js-form-var10">
+                <button id = "btn" onclick="formSend()">Отправить</button>
+            </div>
+        </div>
+    </form>
+    </div>
+
+
+    <div>
+    <div>
+
+        <canvas id = "Canvas" width = "500" height = "300" style = "border: 1px solid #000000;"></canvas>
+
+    </div>
+
+    <div>
+
+        <input type ="text" id ="countRect" />
+        <button id="drawDiagramm" onclick = "DrawDiagramm()">Нарисовать диаграмму</button>
+
+    </div>
+    </div>
+
+    <script>                                           //Canvas
+
+        let canvas = document.getElementById("Canvas");
+        let item = canvas.getContext("2d");
+
+        function DrawDiagramm() 
+        {
+            item.clearRect(0, 0, 500, 300);
+            item.fillStyle = "whitesmoke";
+            item.fillRect(0, 0, 500, 300);
+            item.fillStyle = "black";
+            item.lineWidth = 1.0;
+            item.beginPath();
+            item.moveTo(30, 30);
+            item.lineTo(30, 270);
+            item.lineTo(470, 270);
+            item.stroke();
+
+            var count = document.getElementById("countRect").value;
+
+            var x = 60; var y;
+
+            for(var i = 0; i < count; i++)
+            {
+                item.fillStyle = RandomColor();
+                y = RandomInt()
+                item.fillRect(x, y, (380 - (count - 1) * 30) / count, 270 - y);
+                item.stroke();
+                x = x + (380 - (count - 1) * 30) / count + 30;
+            }
+        }
+
+        function RandomInt() 
+        {
+            return Math.floor(Math.random() * (270 - 30)) + 30;
+        }
+
+        function RandomColor() 
+        {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) 
+            {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+    </script>
+
+
+    <div>
+        <div>
+
+            <div class = "drag-items">
+                <img src="../images/corgi-ph.png" alt="corgi" id="pic1" draggable="true">
+                <img src="../images/pomerun-ph.png" alt="pomerun" id="pic2" draggable="true">
+                <img src="../images/retreiver-ph.png" alt="retreiver" id="pic3" draggable="true">
+                <img src="../images/samoed-ph.png" alt="samoed" id="pic4" draggable="true">
+                <img src="../images/taksa-ph.png" alt="taksa" id="pic5" draggable="true">
+            </div>
+            
+            <div id = "korzina"></div>
+
+        </div>     
+    </div>
+
+    <script>                                              //Drag'n'drop
+
+        let elem1 = document.querySelector('#pic1'); 
+        let elem2 = document.querySelector('#pic2'); 
+        let elem3 = document.querySelector('#pic3'); 
+        let elem4 = document.querySelector('#pic4'); 
+        let elem5 = document.querySelector('#pic5'); 
+        let parent = document.querySelector('#korzina'); 
+
+        parent.addEventListener('dragover',function(event){ 
+        event.preventDefault(); 
+        console.log("over");
+        });
+
+        elem1.addEventListener('dragstart',function(){
+        event.dataTransfer.setData("Text", event.target.id);
+        });
+
+        elem2.addEventListener('dragstart',function(){
+        event.dataTransfer.setData("Text", event.target.id);
+        });
+
+        elem3.addEventListener('dragstart',function(){
+        event.dataTransfer.setData("Text", event.target.id);
+        });
+
+        elem4.addEventListener('dragstart',function(){
+        event.dataTransfer.setData("Text", event.target.id);
+        });
+
+        elem5.addEventListener('dragstart',function(){
+        event.dataTransfer.setData("Text", event.target.id);
+        });
+
+        parent.addEventListener('drop',function(event){
+        plus(event.dataTransfer.getData("Text"));
+        });
+
+        let cart = [
+        {
+        id: "pic1",
+        name: "pic1",
+        count: 0,
+        },
+
+        {
+        id: "pic2",
+        name: "pic2",
+        count: 0,
+        },
+
+        {
+        id: "pic3",
+        name: "pic3",
+        count: 0,
+        },
+
+        {
+        id: "pic4",
+        name: "pic4",
+        count: 0,
+        },
+
+        {
+        id: "pic5",
+        name: "pic5",
+        count: 0,
+        }
+        ];
+
+
+        const plus = id => 
+        {
+            if (id == "pic1") cart[0].count++;
+            if (id == "pic2") cart[1].count++;
+            if (id == "pic3") cart[2].count++;
+            if (id == "pic4") cart[3].count++;
+            if (id == "pic5") cart[4].count++;
+            renderCart();
+        }
+
+        const renderCart = () => 
+        {
+            console.log(cart[0].count);
+            console.log(cart[1].count);
+            console.log(cart[2].count);
+            console.log(cart[3].count);
+            console.log(cart[4].count);
+            parent.innerHTML = (`<p>Корзина:</p><p>Корги: ${cart[0].count} <br/> Шпиц: ${cart[1].count}<br/> Ретривер: ${cart[2].count}<br/> Самоед: ${cart[3].count}<br/> Такса: ${cart[4].count}</p>`);
+        }
+
+        renderCart();
+
+
+
+    </script>
+    <div>
+        <h3>Cookies</h3>  
+    <div class="cookie">
+        
+        <input type ="text" id ="block-cookie"/>
+        <button  onclick = "setCookie('cookie', {path: '/', 'max-age': 100});">Отправить</button>
+        <button onclick = "deleteCookie('cookie');">Очистить</button>
+    </div>
+    </div>
+
+    <script>
+
+        function setCookie(name, options)
+        {
+            var value = document.getElementById('block-cookie').value;
+            
+            if (options.expires instanceof Date)
+            {
+                options.expires = options.expires.toUTCString();
+            }
+
+            var updatedCookie = encodeURIComponent(name) + "=" + encodeURIComponent(value);
+            
+            for (var optionKey in options)
+            {
+                updatedCookie += "; " + optionKey;
+                var optionValue = options[optionKey];
+                if (optionValue !== true)
+                {
+                    updatedCookie += "=" + optionValue;
+                }
+            }
+            document.cookie = updatedCookie;
+        }
+
+        function getCookie(name) 
+        {
+            var matches = document.cookie.match(new RegExp(
+            "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+            ));
+            if(matches)
+            {
+                document.getElementById("block-cookie").value = decodeURIComponent(matches[1]);
+            }
+            return matches ? decodeURIComponent(matches[1]) : undefined;
+        }
+
+        function deleteCookie(name) 
+        {
+            setCookie(name, {path: '/', 'max-age': -1});
+            document.getElementById("block-cookie").value = "";
+        }
+        
+    </script>
+
+    <div>
+        <h3>LocalStorage</h3>
+        <div>
+            <input type ="text" id ="text" />
+            <button onclick = "localStorage.removeItem('text');text.value=''">Очистить</button>
+        </div>
+    </div>
+
+    <script>
+
+        text.value = localStorage.getItem('text');
+        text.oninput = () =>
+        {
+            localStorage.setItem('text', text.value)
+        };
+
+    </script>
+
+
+    <div>
+        <div class="slider">
+
+            <div class="item">
+                <img src="https://s1.1zoom.ru/big0/863/Cats_Paws_Glance_562743_1280x720.jpg" alt="Первый слайд">
+            </div>
+
+            <div class="item">
+                <img src="https://look.com.ua/pic/201307/1280x720/look.com.ua-73191.jpg" alt="Второй слайд">
+            </div>
+
+            <div class="item">
+                <img src="https://look.com.ua/pic/201303/1280x720/look.com.ua-65972.jpg" alt="Третий слайд">
+            </div>
+
+            <div class="item">
+                <img src="https://images.wallpaperscraft.ru/image/single/kot_britanec_ushi_lezhat_tolstyy_67208_1280x720.jpg" alt="Четвертый слайд">
+            </div>
+
+            <div class="item">
+                <img src="https://s1.1zoom.ru/big0/353/432531-Kycb.jpg" alt="Пятый слайд">
+            </div>
+      
+            <a class="prev" onclick="minusSlide()">&#10094;</a>
+            <a class="next" onclick="plusSlide()">&#10095;</a>
+
+        </div>
+        <br>
+      
+        <div class="slider-dots">
+            <span class="slider-dots_item" onclick="currentSlide(1)"></span> 
+            <span class="slider-dots_item" onclick="currentSlide(2)"></span> 
+            <span class="slider-dots_item" onclick="currentSlide(3)"></span>
+            <span class="slider-dots_item" onclick="currentSlide(4)"></span> 
+            <span class="slider-dots_item" onclick="currentSlide(5)"></span>  
+        </div>
+
+        <button id = "play" onclick="autoShow()">Авто</button>
+        <button id = "stop" onclick="stopShow()">Стоп</button> 
+          
+    </div>
+    </div>
+
+
+    <script>
+
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        /*следующй слайд*/
+        function plusSlide() 
+        {
+            showSlides(slideIndex += 1);
+        }
+
+        /*предыдущий слайд*/
+        function minusSlide() 
+        {
+            showSlides(slideIndex -= 1);  
+        }
+
+        /*текущий слайд */
+        function currentSlide(n) 
+        {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) 
+        {
+            var i;
+            var slides = document.getElementsByClassName("item");
+            var dots = document.getElementsByClassName("slider-dots_item");
+            if (n > slides.length) {
+            slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = slides.length
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+
+        a = null;
+
+        function autoShow()
+        {
+            showSlides(slideIndex += 1);
+            a = setTimeout("autoShow()", 1600);
+        }
+
+        function stopShow()
+        {
+            clearTimeout(a);
+        }
+
+    </script>
+
+
+
+<script>
+
+    let switchMode = document.getElementById('btnTheme');
+    switchMode.onclick = function ()
+    {
+        let theme = document.getElementById('theme');
+        if (theme.getAttribute("href") == "../styles/light.css")
+        {
+            theme.href = "../styles/dark.css";
+        }
+        else
+        {
+            theme.href = "../styles/light.css";
+        }
+    }
+
+</script>
+
+
+    <footer class="flex-row-div">
+        
+        <div class="flex-row-div-between-center">
+            <a href="https://vk.com/fewpwsp"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/VK.com-logo.svg/2048px-VK.com-logo.svg.png" width="50" height="50" alt="VK logo"></a>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/768px-Instagram_logo_2016.svg.png" width="50" height="50" alt="Instagram logo">
+            <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="50" height="50" alt="GitHub logo">
+            <button id = "btnTheme">Сменить тему</button> 
+            </div>
+        <div><p>Сайт разработан Логинов Роман, Copyright &copy; 2021</p></div>
+
+
+        
+    </footer>
+</body>
+</html>
