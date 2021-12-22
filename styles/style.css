@@ -87,11 +87,15 @@
   }
   
   .flex-row-div-between-center {
-    width: 1150px;
+    width: 1100px;
     
   }
   .flex-row-div img {
     padding-right: 5px;
+    
+  }
+  .flex-row-div input {
+    text-align: center;
   }
   .wrapper {
     max-width: 1200px;
@@ -296,8 +300,248 @@
     
   }
   
+  .grid-grid-main {
+    display: grid;
+    width: 700px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-areas: 
+    "div1 div1 div2 div7"
+    "div1 div1 div3 div7"
+    "div4 div5 div5 div7"
+    "div6 div8 div9 div7";
+    grid-template-rows: 130px 100px 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 70px;
+    color: white;
+    grid-gap: 10px;
+    text-align: left;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    
+  }
+  .grid-grid-div1 {
+    grid-area: div1;
+    background-color: orange;
+  }
+  .grid-grid-div2 {
+    grid-area: div2;
+    
+    background-color: orange;
+  }
+  .grid-grid-div3 {
+    grid-area: div3;
+    
+    background-color: orange;
+  }
+  .grid-grid-div4 {
+    grid-area: div4;
+    background-color: orange;
+  }
+  .grid-grid-div5 {
+    grid-area: div5;
+    background-color: orange;
+  }
+  .grid-grid-div6 {
+    grid-area: div6;
+    background-color: orange;
+  }
+  .grid-grid-div7 {
+    grid-area: div7;
+    background-color: orange;
+  }
+  .grid-grid-div8 {
+    grid-area: div8;
+    background-color: orange;
+  }
+  .grid-grid-div9 {
+    grid-area: div9;
+    background-color: orange;
+  }
+  .hide-button {
+    display: flex;
+    justify-content: end;
+    margin-right: 20px;
+    
+  }
   
   
+  .js-form {
+    display: grid;
+    width: 300px;
+    height: 400px;
+    align-items: center;
+    margin-left: 580px;
+    margin-right: 580px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    grid-template-areas:
+    "var1 var2"
+    "var3 var4"
+    "var5 var6"
+    "var7 var7"
+    "var8 var8"
+    "var9 var9"
+    "var10 var10";
+    box-shadow: 0px 0px 5px 3px orange;
+    border-radius: 50px;
+  }
+
+
+
+.js-form-var1
+{
+  grid-area: var1;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.js-form-var2
+{
+  grid-area: var2;
+  margin-top: 20px;
+}
+
+.js-form-var3
+{
+  grid-area: var3; 
+  margin-left: 20px;   
+}
+
+.js-form-var4
+{
+  grid-area: var4;
+}
+
+.js-form-var5
+{
+  grid-area: var5; 
+  margin-left: 20px;   
+}
+
+.js-form-var6
+{
+  grid-area: var6;
+}
+
+.js-form-var7
+{
+  grid-area: var7;
+  margin-left: 20px;
+}
+
+.js-form-var8
+{
+  grid-area: var8;
+  margin-left: 20px;
+}
+
+.js-form-var9
+{
+  grid-area: var9;
+  margin-left: 20px;
+}
+
+.js-form-var10
+{
+  grid-area: var10;
+  margin: 0 auto;
+}
   
-  
+.js-body>div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cookie {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  justify-items: space-around;
+}
+
+
+.drag-items
+{
+    display: flex;
+    flex-direction: row;
+    align-items:stretch;
+}
+#pic1, #pic2, #pic3, #pic4, #pic5
+{
+   
+  height: 200px;
+    margin: 20px;
+}
+#korzina
+{
+  box-shadow: 0px 0px 5px 3px orange;
+    border-radius: 50px;
+  height: 170px;
+  text-align: center;
+  margin-left: 520px;
+  padding: 10px;
+  width: 150px;
+}
+
+.slider
+{
+  max-width: 80%;
+  position: relative;
+  height: 500px;
+  margin-bottom: 130px;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.slider .item img 
+{
+  object-fit: cover;
+  width: 100%;
+  height: 500px;
+}
+
+.slider .prev, .slider .next 
+{
+  cursor: pointer; 
+  position: absolute;
+  top: 0;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 0 3px 3px 0;
+}
+
+.slider .next 
+{
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.slider-dots 
+{
+  text-align: center;
+}
+
+.slider-dots_item
+{
+  cursor: pointer;
+  height: 12px;
+  width: 12px;
+  margin: 0 2px;
+  background-color: #ddd;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color ;
+}
+
+.active, .slider-dots_item:hover 
+{
+  background-color: rgb(70, 70, 70);
+}
+
 
